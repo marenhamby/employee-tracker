@@ -54,3 +54,9 @@ function startTracker() {
         };
     })
 };
+
+//Add function to view the current employees
+
+//Add function to add an employee
+
+//Add function to remove an employee

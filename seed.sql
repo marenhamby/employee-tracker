@@ -1,12 +1,13 @@
---remove existing database, if already present
+-- remove existing database, if already present --
 DROP DATABASE IF EXISTS staff_trackerDB;
 
---create new database for this project
+-- create new database for this project --
 CREATE DATABASE staff_trackerDB;
 
---outline which databse will be used for the rest of this document
+-- outline which databse will be used for the rest of this document --
 USE staff_trackerDB;
 
+-- create tables to be used in this application --
 CREATE TABLE department (
     id  INT,
     name VARCHAR(30),
@@ -28,3 +29,5 @@ CREATE TABLE employee (
     role_id INT,
     manager_id INT
 );
+
+-- add starter employee info to the database --
