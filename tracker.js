@@ -25,6 +25,8 @@ connection.connect(function(err) {
 
 
 //Outline questions that the user will be given in the terminal
+
+//first ask the user what task they would like to do
 function startTracker() {
     inquirer.prompt([
         {
@@ -33,5 +35,16 @@ function startTracker() {
             name: 'task',
             choices: ['View all employees', 'Add employee', 'Remove employee']
         }
-    ])
-}
+    ]).then(function ({role}) {
+        //change what is presented to the user based on their answer to the question above
+        if (task === 'View all employees') {
+            console.log('I want to view employees')
+        };
+        if (task === 'Add employee') {
+            console.log('I want to add employees')
+        };
+        if (task === 'Remove employee') {
+            console.log('I want to remove employees')
+        };
+    })
+};
