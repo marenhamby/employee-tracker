@@ -2,7 +2,7 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 
-
+//Outline information for database connection
 var connection = mysql.createConnection({
   host: "localhost",
 
@@ -15,4 +15,10 @@ var connection = mysql.createConnection({
   //Add default password
   password: "",
   database: "staff_trackerDB"
+});
+
+//Make the connection to the database
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("connected as id " + connection.threadId + "\n");
 });
