@@ -35,7 +35,7 @@ function startTracker() {
             type: 'list',
             message: 'What would you like to do?',
             name: 'task',
-            choices: ['View all employees', 'Add employee', 'Remove employee']
+            choices: ['View all employees', 'Add employee', 'Remove employee', 'Exit']
         }
     ]).then(function ({role}) {
         //change what is presented to the user based on their answer to the question above
@@ -47,6 +47,10 @@ function startTracker() {
         };
         if (task === 'Remove employee') {
             console.log('I want to remove employees')
+        };
+        if (task === 'Exit') {
+            console.log('I want this to be over');
+            connection.end();
         };
     })
 };
