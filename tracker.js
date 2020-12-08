@@ -22,3 +22,16 @@ connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId + "\n");
 });
+
+
+//Outline questions that the user will be given in the terminal
+function startTracker() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            message: 'What would you like to do?',
+            name: 'task',
+            choices: ['View all employees', 'Add employee', 'Remove employee']
+        }
+    ])
+}
