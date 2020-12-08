@@ -23,6 +23,8 @@ connection.connect(function(err) {
     console.log("connected as id " + connection.threadId + "\n");
 });
 
+//Run function to start asking the user questions
+startTracker();
 
 //Outline questions that the user will be given in the terminal
 
