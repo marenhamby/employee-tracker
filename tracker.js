@@ -40,7 +40,7 @@ function startTracker() {
         switch (answer.task) {
         case 'View all employees':
             console.log('I want to view employees');
-            currentEmployees();
+            // currentEmployees();
             break;
 
         case 'Add employee':
@@ -79,12 +79,24 @@ function addEmployees() {
         {  
         type: 'list',
         message: "What is the employee's role?",
-        name: 'task',
+        name: 'role',
         choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Jr. Software Engineer', 'COO', 'Accountant', 'Legal Team Lead', 'Lawyer']
         },
     ]).then(function (answer) {
         //add the new user to the employee database
-
+        connection.query(
+            "INSERT INTO employee SET ?",
+            {
+                first_name: answer.first,
+                last_name: answer.last,
+                role_id: answer.role
+            },
+            function(err) {
+                if(err) throw err;
+                console.log("added!");
+                startTracker();
+            }
+        )
     });
 };
 
