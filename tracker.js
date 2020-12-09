@@ -34,7 +34,7 @@ function startTracker() {
         type: 'list',
         message: 'What would you like to do?',
         name: 'task',
-        choices: ['View all employees', 'Add employee', 'Change employee role', 'Exit']
+        choices: ['View all employees', 'View all roles', 'View all departments', 'Add employee', 'Change employee role', 'Exit']
     }).then(function (answer) {
         //change what is presented to the user based on their answer to the question above
         switch (answer.task) {
@@ -42,6 +42,14 @@ function startTracker() {
                 currentEmployees();
                 break;
 
+            case 'View all roles':
+                currentRoles();
+                break;
+
+            case 'View all departments':
+                currentRoles();
+                break;
+            
             case 'Add employee':
                 addEmployees();
                 break;
