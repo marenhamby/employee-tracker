@@ -15,5 +15,5 @@ This application requires you to download the Inquirer and My SQL npm packages. 
 Click on the screenshot for a video running through the code in the terminal:
 
 <a href="https://drive.google.com/file/d/10QmYa8Vla_tCaUkqnkU6eT2X6gMtxJCk/preview
-" target="_blank"><img src="./assets/generated-team-screenshot.PNG" 
+" target="_blank"><img src="./assets/terminal_screenshot.PNG" 
 alt="Example Runthrough" width="700"/></a>
