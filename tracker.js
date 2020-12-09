@@ -39,22 +39,22 @@ function startTracker() {
         //change what is presented to the user based on their answer to the question above
         switch (answer.task) {
         case 'View all employees':
-            console.log('I want to view employees');
+            // console.log('I want to view employees');
             currentEmployees();
             break;
 
         case 'Add employee':
-            console.log('I want to add employees');
+            // console.log('I want to add employees');
             addEmployees();
             break;
 
         case 'Change employee role':
-            console.log('I want to remove employees');
+            // console.log('I want to remove employees');
             changeRole();
             break;
 
         case 'Exit':
-            console.log('I want this to be over');
+            // console.log('I want this to be over');
             connection.end();
             break;   
         }
@@ -64,7 +64,7 @@ function startTracker() {
 
 //Add function to view the current employees
 function currentEmployees() {
-    var search = connection.query(`SELECT employee.id, employee.first_name employee.last_name as Name, employee.last_name as Last_Name, role.title as Role, role.salary as Salary, department.name as Department 
+    var search = connection.query(`SELECT employee.id, employee.first_name as First_Name, employee.last_name as Last_Name, role.title as Role, role.salary as Salary, department.name as Department 
     FROM ((employee 
     LEFT JOIN role ON employee.role_id = role.id) 
     LEFT JOIN department ON role.department_id = department.id)`,
@@ -133,7 +133,7 @@ function addEmployees() {
     });
 };
 
-//Add function to change an employee's role
+// Add function to change an employee's role
 function changeRole() {
     connection.query("SELECT * FROM employee", function(err, results) {
        if (err) throw err;
@@ -157,11 +157,9 @@ function changeRole() {
             choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Jr. Software Engineer', 'COO', 'Accountant', 'Legal Team Lead', 'Lawyer']
             }
         ]).then(function(answer){
-            console.log(answer)
+            console.log(answer);
             var name = answer.person;
             console.log(name);
-            var first = name.split('', 1);
-            console.log(first)
         })
 
     })
