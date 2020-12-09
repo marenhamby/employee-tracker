@@ -40,7 +40,7 @@ function startTracker() {
         switch (answer.task) {
         case 'View all employees':
             console.log('I want to view employees');
-            // currentEmployees();
+            currentEmployees();
             break;
 
         case 'Add employee':
@@ -68,6 +68,7 @@ function currentEmployees() {
     LEFT JOIN role ON employee.role_id = role.id) 
     LEFT JOIN department ON role.department_id = department.id)`,
     function (err, res) {
+        if (err) throw err;
         console.table(res);
     });
 };
@@ -92,7 +93,11 @@ function addEmployees() {
         choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Jr. Software Engineer', 'COO', 'Accountant', 'Legal Team Lead', 'Lawyer']
         },
     ]).then(function (answer) {
+
+
+        
         //add the new user to the employee database
+
         connection.query(
             "INSERT INTO employee SET ?",
             {
