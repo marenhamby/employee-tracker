@@ -76,7 +76,8 @@ function currentEmployees() {
             if (err) throw err;
             console.table(res);
             startTracker();
-        });
+        }
+    );
 };
 
 //Add function to view the current roles
@@ -88,12 +89,20 @@ function currentRoles() {
             if (err) throw err;
             console.table(res);
             startTracker();
-        });
+        }
+    );
 };
 
 //Add function to view the current departments
 function currentDepartments() {
-
+    connection.query(`SELECT department.id, department.name as Department 
+    FROM department`,
+        function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            startTracker();
+        }
+    );
 };
 
 //Add function to add an employee
