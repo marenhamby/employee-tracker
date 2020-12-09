@@ -169,8 +169,24 @@ function addEmployees() {
 
 //Add function to delete an employee
 function delEmployees() {
-    
-}
+    connection.query("SELECT * FROM employee", function (err, results) {
+        if (err) throw err;
+        const empList = results.map(person => { return { name: `${person.first_name} ${person.last_name}`, value: person.id } })
+        
+        inquirer.prompt({
+            type: 'list',
+            message: 'What employee would you like to remove?',
+            name: 'person',
+            choices: empList
+        }).then(function ({ person, role }) {
+            connection.query("DELETE FROM employee WHERE id = ?", person, err => {
+                if (err) console.log(err)
+                startTracker()
+            })
+        })
+        
+    });
+};
 
 // Add function to change an employee's role
 function changeRole() {
