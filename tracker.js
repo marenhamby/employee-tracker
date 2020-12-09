@@ -50,6 +50,7 @@ function startTracker() {
 
         case 'Remove employee':
             console.log('I want to remove employees');
+            removeEmployees();
             break;
 
         case 'Exit':
@@ -132,3 +133,12 @@ function addEmployees() {
 };
 
 //Add function to remove an employee
+function removeEmployees() {
+    inquirer.prompt({  
+        type: 'list',
+        message: 'Who would you like to remove?',
+        name: 'task',
+        choices: []
+    }).then(function (answer) {
+
+}
