@@ -49,7 +49,7 @@ function startTracker() {
             case 'View all departments':
                 currentDepartments();
                 break;
-            
+
             case 'Add employee':
                 addEmployees();
                 break;
@@ -81,7 +81,14 @@ function currentEmployees() {
 
 //Add function to view the current roles
 function currentRoles() {
-
+    connection.query(`SELECT role.id, role.title as Role, role.salary as Salary, department.name as Department 
+    FROM employee 
+    LEFT JOIN department ON role.department_id = department.id`,
+        function (err, res) {
+            if (err) throw err;
+            console.table(res);
+            startTracker();
+        });
 };
 
 //Add function to view the current departments
@@ -167,8 +174,8 @@ function changeRole() {
                     name: 'role',
                     choices: roleList
                 }
-            ]).then(function ({person, role}) {
-                connection.query("UPDATE employee SET role_id = ? WHERE id = ?",[role, person], err=>{
+            ]).then(function ({ person, role }) {
+                connection.query("UPDATE employee SET role_id = ? WHERE id = ?", [role, person], err => {
                     if (err) console.log(err)
                     startTracker()
                 })
