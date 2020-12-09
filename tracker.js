@@ -71,6 +71,7 @@ function currentEmployees() {
     function (err, res) {
         if (err) throw err;
         console.table(res);
+        startTracker();
     });
 };
 
@@ -134,11 +135,32 @@ function addEmployees() {
 
 //Add function to change an employee's role
 function changeRole() {
-    inquirer.prompt({  
-        type: 'list',
-        message: 'Who would you like to remove?',
-        name: 'task',
-        choices: []
-    }).then(function (answer) {
+    connection.query("SELECT * FROM employee", function(err, results) {
+       if (err) throw err;
+        inquirer.prompt([
+            {  
+            type: 'list',
+            message: 'Whose role would you like to change?',
+            name: 'person',
+            choices: function () {
+                var choiceArray = [];
+                for (var i = 0; i < results.length; i++) {
+                    choiceArray.push(results[i].first_name + " " + results[i].last_name);
+                }
+                return choiceArray;
+            }
+            },
+            {
+            type: 'list',
+            message: "What is the employee's new role?",
+            name: 'role',
+            choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Jr. Software Engineer', 'COO', 'Accountant', 'Legal Team Lead', 'Lawyer']
+            }
+        ]).then(function(answer){
+            console.log(answer)
+        })
 
-}
+    })
+    
+
+};
