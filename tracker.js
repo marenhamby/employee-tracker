@@ -20,39 +20,42 @@ var connection = mysql.createConnection({
 //Make the connection to the database
 connection.connect(function(err) {
     if (err) throw err;
-    console.log("connected as id " + connection.threadId + "\n");
+    //Run function to start asking the user questions
+    startTracker();
 });
 
-//Run function to start asking the user questions
-startTracker();
+
 
 //Outline questions that the user will be given in the terminal
 
 //first ask the user what task they would like to do
 function startTracker() {
-    inquirer.prompt([
-        {
-            type: 'list',
-            message: 'What would you like to do?',
-            name: 'task',
-            choices: ['View all employees', 'Add employee', 'Remove employee', 'Exit']
-        }
-    ]).then(function ({role}) {
+    inquirer.prompt({  
+        type: 'list',
+        message: 'What would you like to do?',
+        name: 'task',
+        choices: ['View all employees', 'Add employee', 'Remove employee', 'Exit']
+    }).then(function (answer) {
         //change what is presented to the user based on their answer to the question above
-        if (task === 'View all employees') {
-            console.log('I want to view employees')
-        };
-        if (task === 'Add employee') {
-            console.log('I want to add employees')
-        };
-        if (task === 'Remove employee') {
-            console.log('I want to remove employees')
-        };
-        if (task === 'Exit') {
+        switch (answer.task) {
+        case 'View all employees':
+            console.log('I want to view employees');
+            break;
+
+        case 'Add employee':
+            console.log('I want to add employees');
+            break;
+
+        case 'Remove employee':
+            console.log('I want to remove employees');
+            break;
+
+        case 'Exit':
             console.log('I want this to be over');
             connection.end();
-        };
-    })
+            break;   
+        }
+    });
 };
 
 //Add function to view the current employees
