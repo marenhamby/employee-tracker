@@ -82,7 +82,7 @@ function currentEmployees() {
 //Add function to view the current roles
 function currentRoles() {
     connection.query(`SELECT role.id, role.title as Role, role.salary as Salary, department.name as Department 
-    FROM employee 
+    FROM role 
     LEFT JOIN department ON role.department_id = department.id`,
         function (err, res) {
             if (err) throw err;
