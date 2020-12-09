@@ -39,22 +39,18 @@ function startTracker() {
         //change what is presented to the user based on their answer to the question above
         switch (answer.task) {
         case 'View all employees':
-            // console.log('I want to view employees');
             currentEmployees();
             break;
 
         case 'Add employee':
-            // console.log('I want to add employees');
             addEmployees();
             break;
 
         case 'Change employee role':
-            // console.log('I want to remove employees');
             changeRole();
             break;
 
         case 'Exit':
-            // console.log('I want this to be over');
             connection.end();
             break;   
         }
