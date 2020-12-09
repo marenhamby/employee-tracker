@@ -167,6 +167,11 @@ function addEmployees() {
     });
 };
 
+//Add function to delete an employee
+function delEmployees() {
+    
+}
+
 // Add function to change an employee's role
 function changeRole() {
     connection.query("SELECT * FROM employee", function (err, results) {
