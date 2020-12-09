@@ -68,7 +68,7 @@ function startTracker() {
 
 //Add function to view the current employees
 function currentEmployees() {
-    var search = connection.query(`SELECT employee.id, employee.first_name as First_Name, employee.last_name as Last_Name, role.title as Role, role.salary as Salary, department.name as Department 
+    connection.query(`SELECT employee.id, employee.first_name as First_Name, employee.last_name as Last_Name, role.title as Role, role.salary as Salary, department.name as Department 
     FROM ((employee 
     LEFT JOIN role ON employee.role_id = role.id) 
     LEFT JOIN department ON role.department_id = department.id)`,
