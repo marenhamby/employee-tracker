@@ -93,9 +93,26 @@ function addEmployees() {
         choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Jr. Software Engineer', 'COO', 'Accountant', 'Legal Team Lead', 'Lawyer']
         },
     ]).then(function (answer) {
-
-
-        
+        switch (answer.role) {
+            case 'Sales Lead': answer.role = 1;
+            break;
+            case 'Salesperson': answer.role = 2;
+            break;
+            case 'Lead Engineer': answer.role = 3;
+            break;
+            case 'Software Engineer': answer.role = 4;
+            break;
+            case 'Jr. Software Engineer': answer.role = 5;
+            break;
+            case 'COO': answer.role = 6;
+            break;
+            case 'Accountant': answer.role = 7;
+            break;
+            case 'Legal Team Lead': answer.role = 8;
+            break;
+            case 'Lawyer': answer.role = 9;
+            break;
+        }
         //add the new user to the employee database
 
         connection.query(
