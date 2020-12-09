@@ -47,7 +47,7 @@ function startTracker() {
                 break;
 
             case 'View all departments':
-                currentRoles();
+                currentDepartments();
                 break;
             
             case 'Add employee':
@@ -77,6 +77,16 @@ function currentEmployees() {
             console.table(res);
             startTracker();
         });
+};
+
+//Add function to view the current roles
+function currentRoles() {
+
+};
+
+//Add function to view the current departments
+function currentDepartments() {
+
 };
 
 //Add function to add an employee
