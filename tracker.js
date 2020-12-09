@@ -34,7 +34,7 @@ function startTracker() {
         type: 'list',
         message: 'What would you like to do?',
         name: 'task',
-        choices: ['View all employees', 'Add employee', 'Remove employee', 'Exit']
+        choices: ['View all employees', 'Add employee', 'Change employee role', 'Exit']
     }).then(function (answer) {
         //change what is presented to the user based on their answer to the question above
         switch (answer.task) {
@@ -48,9 +48,9 @@ function startTracker() {
             addEmployees();
             break;
 
-        case 'Remove employee':
+        case 'Change employee role':
             console.log('I want to remove employees');
-            removeEmployees();
+            changeRole();
             break;
 
         case 'Exit':
@@ -132,8 +132,8 @@ function addEmployees() {
     });
 };
 
-//Add function to remove an employee
-function removeEmployees() {
+//Add function to change an employee's role
+function changeRole() {
     inquirer.prompt({  
         type: 'list',
         message: 'Who would you like to remove?',
