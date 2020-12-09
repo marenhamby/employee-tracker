@@ -31,7 +31,7 @@ connection.connect(function(err) {
 //first ask the user what task they would like to do
 function startTracker() {
     inquirer.prompt({  
-        type: 'action',
+        type: 'list',
         message: 'What would you like to do?',
         name: 'task',
         choices: ['View all employees', 'Add employee', 'Remove employee', 'Exit']
@@ -61,7 +61,9 @@ function startTracker() {
 };
 
 //Add function to view the current employees
-
+function currentEmployees() {
+    
+}
 
 //Add function to add an employee
 function addEmployees() {
