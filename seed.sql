@@ -13,8 +13,5 @@ INSERT INTO employee (first_name, last_name, role_id)
 VALUES ('Neil', 'Weasley', 1), ('Kenley', 'Bruzz', 2), ('Mark', 'Smith', 2), ('Jenn', 'Bon', 3), ('Robert', 'Wallace', 4), ('Talita', 'McNoll', 5), ('Meagan', 'Bruzz', 6), ('Andrea', 'Williams', 7), ('Courtney', 'Cramer', 7), ('Lydia', 'Howell', 8), ('Laura', 'Smicket', 9), ('JimBob', 'Dixon', 9);
 
 
-SELECT employee.id, employee.first_name as First_Name, employee.last_name as Last_Name, role.title as Role, role.salary as Salary, department.name as Department
-FROM ((employee
-LEFT JOIN role ON employee.role_id = role.id)
-LEFT JOIN department ON role.department_id = department.id)
+
 
